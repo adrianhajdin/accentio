@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Manrope } from "next/font/google";
-import { site } from "@/content";
+import { hero, site } from "@/content";
 import "./globals.css";
 
 const geist = Geist({
@@ -13,6 +13,10 @@ const manrope = Manrope({
   subsets: ["latin"],
 });
 
+// Share image: src/app/opengraph-image.png + twitter-image.png (1200×630),
+// picked up automatically by Next.js and added to the tags below.
+const shareTitle = `${site.name} — ${hero.titleLead} ${hero.titleAccent.replace(/ /g, " ")}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -20,13 +24,19 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: `${site.name} — ${site.tagline}`,
+    title: shareTitle,
     description: site.description,
-    url: site.url,
+    url: "/",
     siteName: site.name,
     type: "website",
     locale: "en_CA",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: shareTitle,
+    description: site.description,
   },
 };
 

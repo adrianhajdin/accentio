@@ -8,7 +8,7 @@ import { process } from "@/content";
  * "From hundreds of people to your 3": a pinned section where scrolling drives
  * a candidate funnel drawn on a 2D canvas. Brief → dots appear, Search → they
  * flow into the funnel and most drop out, Shortlist → the top 3 land in the
- * shortlist card (Day 7), Hire → one is marked hired.
+ * shortlist card (Phase 7), Hire → one is marked hired.
  */
 
 const DOTS = 340;
@@ -228,11 +228,11 @@ export function ShortlistFunnel() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const [step, setStep] = useState(0);
-  const [day, setDay] = useState(1);
+  const [phase, setPhase] = useState(1);
 
   useMotionValueEvent(scrollYProgress, "change", (p) => {
     setStep(stepFor(p));
-    setDay(Math.min(7, 1 + Math.floor(range(p, 0.04, SHORTLIST_DONE) * 6.999)));
+    setPhase(Math.min(7, 1 + Math.floor(range(p, 0.04, SHORTLIST_DONE) * 6.999)));
   });
 
   const current = process.steps[step];
@@ -297,7 +297,7 @@ export function ShortlistFunnel() {
             <div className="mb-4 flex items-center justify-between gap-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 text-sm">
                 <span className="size-1.5 rounded-full bg-lavender-300" />
-                Day <span className="tabular-nums">{day}</span>
+                Phase <span className="tabular-nums">{phase}</span>
                 <span className="text-paper/45">of 7</span>
               </span>
               <span className="text-sm text-paper/60">{current.status}</span>

@@ -7,7 +7,7 @@
 
 export const site = {
   name: "Accentio",
-  url: "https://accentiogroup.com",
+  url: "https://www.accentiogroup.com",
   tagline: "Boutique recruitment firm",
   description:
     "Accentio is a boutique recruitment firm placing leaders and specialists in sales, marketing, technology, product, HR and finance across North America. 1,000+ placements, 98% fill rate, shortlists in a week.",
