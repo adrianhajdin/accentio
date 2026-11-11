@@ -15,12 +15,12 @@ const manrope = Manrope({
 
 // Share image: src/app/opengraph-image.png + twitter-image.png (1200×630),
 // picked up automatically by Next.js and added to the tags below.
-const shareTitle = `${site.name} — ${hero.titleLead} ${hero.titleAccent.replace(/ /g, " ")}`;
+const shareTitle = `${site.name} | ${hero.titleLead} ${hero.titleAccent.replace(/ /g, " ")}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: `${site.name} | ${site.tagline}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,

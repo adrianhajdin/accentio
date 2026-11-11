@@ -14,7 +14,7 @@ export function Stats() {
           <Reveal delay={0.1}>
             <p className="max-w-md text-lg leading-relaxed text-ink-soft md:ml-auto">
               A decade of placing leaders across sales, marketing, technology, product, HR and
-              finance — from high-stakes CTO searches to brand-new AI roles.
+              finance, from high-stakes CTO searches to brand-new AI roles.
             </p>
           </Reveal>
         </div>

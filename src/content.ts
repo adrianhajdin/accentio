@@ -29,8 +29,8 @@ export const nav = [
 export const hero = {
   titleLead: "The leaders you need,",
   titleAccent: "when you need\u00a0them.",
-  // Alternatives offered: "Senior roles, shortlisted in days — not months." / "Exceptional leaders. Placed fast."
-  body: "Accentio is a boutique recruitment firm. For ten years we've helped founders, boards and leadership teams hire the people who define what comes next — from founding team members to the C-suite.",
+  // Alternatives offered: "Senior roles, shortlisted in days, not months." / "Exceptional leaders. Placed fast."
+  body: "Accentio is a boutique recruitment firm. For ten years we've helped founders, boards and leadership teams hire the people who define what comes next, from founding team members to the C-suite.",
 };
 
 /** Hero card: what we recruit for, with example roles. */
@@ -49,7 +49,7 @@ export const specialties = [
 export const reach = {
   titleLead: "One partner,",
   titleAccent: "all of North America.",
-  body: "We recruit for companies across Canada and the United States — remote, hybrid or on-site.",
+  body: "We recruit for companies across Canada and the United States, whether remote, hybrid or on-site.",
 };
 
 export const stats = [
@@ -86,7 +86,7 @@ export const process = {
     {
       title: "Brief",
       status: "Briefing call",
-      body: "We dig into the role, the team and the culture you're building — what success looks like a year from now, not just a job description.",
+      body: "We dig into the role, the team and the culture you're building, and what success looks like a year from now, not just a job description.",
     },
     {
       title: "Search",
@@ -112,7 +112,7 @@ export const employers = {
   body: "From a high-stakes CTO search to building out a marketing team, we've done it for global brands and fast-growing startups alike.",
   points: [
     "C-level, VP and senior specialist searches",
-    "Shortlist within one week — 96% of the time",
+    "Shortlist within one week, 96% of the time",
     "98% of the searches we take on are filled",
     "Confidential searches handled with discretion",
   ],
@@ -122,11 +122,11 @@ export const employers = {
 export const candidates = {
   id: "candidates",
   title: "Ready for the role that changes your trajectory?",
-  body: "We work with ambitious people at every stage — from rising managers to seasoned executives — and we'll be straight with you about fit.",
+  body: "We work with ambitious people at every stage, from rising managers to seasoned executives, and we'll be straight with you about fit.",
   points: [
     "Introductions to great companies across North America",
     "Honest advice on compensation, offers and timing",
-    "Confidential conversations — your search stays private",
+    "Confidential conversations, so your search stays private",
     "One point of contact from first call to start date",
   ],
   cta: {
@@ -184,7 +184,7 @@ export const testimonials = [
   },
   {
     quote:
-      "Mateo told me honestly when a role wasn't right — and then found me the one that was.",
+      "Mateo told me honestly when a role wasn't right, and then found me the one that was.",
     title: "VP Sales, placed 2025",
   },
 ];
@@ -199,7 +199,7 @@ export const team = {
       linkedin: "https://www.linkedin.com/in/mateopolic/",
       // Headshots live in /public/team (square, 480px)
       photo: "/team/mateo-polic.webp",
-      bio: "Mateo arrived in Toronto from Croatia in 2013 with two duffle bags and a lot of ambition. After recruiting at Michael Page and Shopify, he founded Accentio and has since partnered with founders, C-level executives and boards at 50+ companies across four continents — including Shopify, FreshBooks and HelloFresh.",
+      bio: "Mateo arrived in Toronto from Croatia in 2013 with two duffle bags and a lot of ambition. After recruiting at Michael Page and Shopify, he founded Accentio and has since partnered with founders, C-level executives and boards at 50+ companies across four continents, including Shopify, FreshBooks and HelloFresh.",
       aside: "Invests in early-stage Toronto startups. Plays chess and basketball.",
     },
     {
@@ -216,5 +216,5 @@ export const team = {
 
 export const contact = {
   title: "Your next great hire starts with a conversation.",
-  body: "Tell us about the role you need to fill — or the move you're thinking about making. Call or email, and you'll speak with a partner directly.",
+  body: "Tell us about the role you need to fill, or the move you're thinking about making. Call or email, and you'll speak with a partner directly.",
 };

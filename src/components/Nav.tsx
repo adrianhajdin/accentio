@@ -37,7 +37,7 @@ export function Nav() {
       className="group/header fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-500 data-[scrolled=true]:border-line/80 data-[scrolled=true]:bg-paper/80 data-[scrolled=true]:backdrop-blur-xl"
     >
       <div className="container-page flex h-[4.5rem] items-center justify-between gap-6">
-        <a href="#top" aria-label="Accentio — back to top" onClick={close}>
+        <a href="#top" aria-label="Accentio, back to top" onClick={close}>
           <Logo />
         </a>
 
