@@ -1,7 +1,7 @@
 import { contact, nav, site } from "@/content";
 import { Logo } from "./Logo";
 import { Reveal } from "./motion";
-import { ArrowIcon, LinkedInIcon } from "./ui";
+import { ArrowIcon, Glow, LinkedInIcon } from "./ui";
 import { Year } from "./Year";
 
 export function Contact() {
@@ -13,10 +13,7 @@ export function Contact() {
   return (
     <section id="contact" className="px-3 pb-3 md:px-5 md:pb-5">
       <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-lavender-300 via-lavender-200 to-lavender-100 py-20 md:rounded-[2.5rem] md:py-28">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -bottom-40 -right-20 size-[36rem] rounded-full bg-lavender-400/40 blur-[120px]"
-        />
+        <Glow className="-bottom-40 -right-20 size-[36rem]" color={"color-mix(in srgb, var(--color-lavender-400) 40%, transparent)"} blur={120} />
         <div className="container-page relative">
           <Reveal>
             <h2 className="max-w-4xl font-display font-semibold text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.02] tracking-[-0.035em]">
@@ -30,7 +27,7 @@ export function Contact() {
               <Reveal key={c.label} delay={i * 0.08} className="min-w-0">
                 <a
                   href={c.href}
-                  className="group flex items-center justify-between gap-3 rounded-3xl bg-white/55 p-5 backdrop-blur transition-colors hover:bg-white/85 sm:gap-4 md:p-8"
+                  className="group flex items-center justify-between gap-3 rounded-3xl bg-white/55 p-5 transition-colors lg:backdrop-blur hover:bg-white/85 sm:gap-4 md:p-8"
                 >
                   <span className="min-w-0">
                     <span className="block text-sm text-ink-muted">{c.label}</span>

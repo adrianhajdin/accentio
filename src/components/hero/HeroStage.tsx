@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import mapData from "@/data/north-america.json";
 import { getStageLayout, type StageLayout } from "./layout";
+import { Glow } from "../ui";
 
 // three.js only loads in the browser, after the hero text has rendered.
 const Constellation = dynamic(() => import("./Constellation"), { ssr: false });
@@ -66,8 +67,8 @@ export function HeroStage({ children }: { children: ReactNode }) {
     <div ref={stageRef} className="relative">
       <div ref={stickyRef} className="sticky top-0 h-svh overflow-hidden" aria-hidden="true">
         {/* soft lavender light */}
-        <div className="pointer-events-none absolute -top-40 right-[-10%] size-[42rem] rounded-full bg-lavender-200/70 blur-[120px]" />
-        <div className="pointer-events-none absolute top-40 -left-40 size-[30rem] rounded-full bg-lavender-100 blur-[100px]" />
+        <Glow className="-top-40 right-[-10%] size-[42rem]" color={"color-mix(in srgb, var(--color-lavender-200) 70%, transparent)"} blur={120} />
+        <Glow className="top-40 -left-40 size-[30rem]" color="var(--color-lavender-100)" blur={100} />
 
         <Constellation morph={morph} reduceMotion={reduceMotion} active={active} />
 

@@ -3,6 +3,7 @@
 import { useMotionValueEvent, useReducedMotion, useScroll, type MotionValue } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { process } from "@/content";
+import { Glow } from "./ui";
 
 /*
  * "From hundreds of people to your 3": a pinned section where scrolling drives
@@ -64,7 +65,7 @@ function FunnelCanvas({ progress }: { progress: MotionValue<number> }) {
     const dots = makeDots();
     const font = getComputedStyle(document.body).fontFamily;
     const t0 = performance.now();
-    let w = 0, h = 0, raf = 0, visible = false, last = -1;
+    let w = 0, h = 0, raf = 0, visible = false, last = -1, lastDraw = 0;
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -81,9 +82,11 @@ function FunnelCanvas({ progress }: { progress: MotionValue<number> }) {
       raf = requestAnimationFrame(draw);
       const p = progress.get();
       const time = (now - t0) / 1000;
-      // Only the idle shimmer needs continuous frames; otherwise redraw on change.
-      if (p === last && (reduce || p > 0.95)) return;
+      // Scrolling redraws every frame. At rest only the shimmer moves, so it
+      // runs at ~30fps (and not at all once it's switched off).
+      if (p === last && (reduce || p > 0.95 || now - lastDraw < 32)) return;
       last = p;
+      lastDraw = now;
 
       ctx.clearRect(0, 0, w, h);
       const desktop = w > 560;
@@ -240,10 +243,7 @@ export function ShortlistFunnel() {
   return (
     <section ref={ref} id="process" className="relative h-[340svh] bg-ink text-paper">
       <div className="sticky top-0 flex h-svh items-center overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-48 left-1/2 size-[50rem] -translate-x-1/2 rounded-full bg-lavender-600/25 blur-[140px]"
-        />
+        <Glow className="-top-48 left-1/2 size-[50rem] -translate-x-1/2" color={"color-mix(in srgb, var(--color-lavender-600) 25%, transparent)"} blur={140} />
         <div className="container-page relative grid w-full items-center gap-8 pt-16 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:pt-0">
           <div>
             <h2 className="font-display text-[clamp(1.9rem,4.4vw,3.5rem)] font-semibold leading-[1.04] tracking-[-0.03em]">

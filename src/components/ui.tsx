@@ -41,3 +41,22 @@ export function CheckIcon({ className = "size-4" }: { className?: string }) {
     </svg>
   );
 }
+
+/**
+ * Soft colored glow. Drawn as a radial gradient instead of `filter: blur()`,
+ * which is expensive to composite on phones while scrolling. `blur` matches
+ * the old blur radius so the glow keeps the same size and falloff.
+ */
+export function Glow({ className, color, blur }: { className: string; color: string; blur: number }) {
+  return (
+    <div aria-hidden="true" className={`pointer-events-none absolute ${className}`}>
+      <div
+        className="absolute"
+        style={{
+          inset: -blur * 2,
+          backgroundImage: `radial-gradient(closest-side, ${color} 30%, transparent)`,
+        }}
+      />
+    </div>
+  );
+}

@@ -1,6 +1,6 @@
 import { candidates, employers } from "@/content";
 import { Reveal } from "./motion";
-import { ArrowIcon, CheckIcon } from "./ui";
+import { ArrowIcon, CheckIcon, Glow } from "./ui";
 
 type Audience = typeof employers;
 
@@ -16,10 +16,7 @@ function AudienceCard({ data, tone }: { data: Audience; tone: "lavender" | "pape
       }`}
     >
       {lavender && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-lavender-300/50 blur-3xl"
-        />
+        <Glow className="-right-24 -top-24 size-72" color={"color-mix(in srgb, var(--color-lavender-300) 50%, transparent)"} blur={64} />
       )}
       <div className="relative flex h-full flex-col">
         <h3 className="font-display font-semibold text-[clamp(1.85rem,3.5vw,2.6rem)] leading-[1.04] tracking-[-0.03em]">

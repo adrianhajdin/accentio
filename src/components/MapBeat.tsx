@@ -9,7 +9,7 @@ export function MapBeat() {
     <section id="reach" aria-labelledby="reach-title" className="relative h-[150svh]">
       <div className="sticky top-[56svh] lg:top-[30svh]">
         <div className="container-page">
-          <div className="max-w-sm rounded-3xl bg-paper/75 p-6 backdrop-blur-md lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+          <div className="max-w-sm rounded-3xl bg-paper/90 p-6 lg:bg-transparent lg:p-0">
             <h2
               id="reach-title"
               className="font-display text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.04] tracking-[-0.03em]"

@@ -129,13 +129,22 @@ function createMaterial() {
 type SceneProps = {
   morph: MotionValue<number>;
   reduceMotion: boolean;
+  active: boolean;
 };
 
-function Dots({ morph, reduceMotion }: SceneProps) {
+function Dots({ morph, reduceMotion, active }: SceneProps) {
   const geometry = useMemo(() => buildGeometry(), []);
   const material = useMemo(() => createMaterial(), []);
   const pointsRef = useRef<THREE.Points<THREE.BufferGeometry, THREE.ShaderMaterial>>(null);
-  const { size, viewport, gl } = useThree();
+  const { size, viewport, gl, invalidate } = useThree();
+
+  // Render on demand: only when scroll moves the morph (and, below, while the
+  // dots are still flying in). A settled or empty map costs no frames, which
+  // keeps the GPU free for scrolling on phones.
+  useEffect(() => morph.on("change", () => invalidate()), [morph, invalidate]);
+  useEffect(() => {
+    if (active) invalidate();
+  }, [active, invalidate]);
 
   // Re-layout on resize: convert the shared pixel layout to world units.
   useEffect(() => {
@@ -148,7 +157,8 @@ function Dots({ morph, reduceMotion }: SceneProps) {
     u.uMapScale.value = l.map.s * k;
     u.uPixelRatio.value = gl.getPixelRatio();
     u.uSize.value = l.desktop ? 5.6 : 4.2;
-  }, [size, viewport.width, gl]);
+    invalidate();
+  }, [size, viewport.width, gl, invalidate]);
 
   useEffect(
     () => () => {
@@ -164,25 +174,33 @@ function Dots({ morph, reduceMotion }: SceneProps) {
     const u = points.material.uniforms;
     const dt = Math.min(delta, 0.05);
     if (!reduceMotion) u.uTime.value += dt;
-    u.uMorph.value = THREE.MathUtils.damp(u.uMorph.value, morph.get(), 6, dt);
+    const target = morph.get();
+    const next = THREE.MathUtils.damp(u.uMorph.value, target, 6, dt);
+    const settled = Math.abs(next - target) < 0.0005;
+    u.uMorph.value = settled ? target : next;
+    // Keep going while easing, or while partly assembled (the dots drift).
+    const drifting = !reduceMotion && u.uMorph.value > 0 && u.uMorph.value < 1;
+    if (!settled || drifting) invalidate();
   });
 
   return <points ref={pointsRef} geometry={geometry} material={material} frustumCulled={false} />;
 }
 
-export default function Constellation(props: SceneProps & { active: boolean }) {
-  const { active, ...scene } = props;
+export default function Constellation(props: SceneProps) {
   return (
     <Canvas
       className="!absolute inset-0"
       style={{ pointerEvents: "none" }}
-      frameloop={active ? "always" : "never"}
+      frameloop={props.active ? "demand" : "never"}
+      // The canvas lives in a sticky layer; it never needs re-measuring on scroll.
+      resize={{ scroll: false }}
       dpr={[1, 1.5]}
-      gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+      // Soft round dots are anti-aliased in the shader; MSAA only costs GPU time.
+      gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
       camera={{ position: [0, 0, 10], fov: 30 }}
       fallback={null}
     >
-      <Dots {...scene} />
+      <Dots {...props} />
     </Canvas>
   );
 }
