@@ -13,6 +13,7 @@ type Size = { l: StageLayout; w: number; h: number };
 
 const labelPosition: Record<string, string> = {
   left: "right-3 top-1/2 -translate-y-1/2",
+  upleft: "right-2.5 bottom-0",
   right: "left-3 top-1/2 -translate-y-1/2",
   top: "bottom-2.5 left-1/2 -translate-x-1/2",
   bottom: "top-2.5 left-1/2 -translate-x-1/2",
@@ -88,7 +89,7 @@ export function HeroStage({ children }: { children: ReactNode }) {
                   )}
                   <span className="absolute size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ink ring-[3px] ring-paper" />
                   <span
-                    className={`absolute whitespace-nowrap rounded-full bg-paper/90 px-1.5 text-[10px] font-medium text-ink lg:text-xs ${labelPosition[c.side]}`}
+                    className={`absolute z-10 whitespace-nowrap rounded-full bg-paper/90 px-1.5 text-[10px] font-medium text-ink lg:text-xs ${labelPosition[c.side]}`}
                   >
                     {c.label}
                   </span>

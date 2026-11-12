@@ -14,7 +14,7 @@ const cities = [
   { id: "losangeles", label: "Los Angeles", lat: 34.05, lng: -118.24, side: "left" },
   { id: "austin", label: "Austin", lat: 30.27, lng: -97.74, side: "bottom" },
   { id: "chicago", label: "Chicago", lat: 41.88, lng: -87.63, side: "left" },
-  { id: "toronto", label: "Toronto", lat: 43.65, lng: -79.38, side: "top" },
+  { id: "toronto", label: "Toronto", lat: 43.65, lng: -79.38, side: "upleft" },
   { id: "montreal", label: "Montréal", lat: 45.5, lng: -73.57, side: "right" },
   { id: "newyork", label: "New York", lat: 40.71, lng: -74.0, side: "right" },
   { id: "miami", label: "Miami", lat: 25.76, lng: -80.19, side: "right" },

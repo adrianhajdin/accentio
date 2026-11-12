@@ -20,6 +20,6 @@ export function getStageLayout(w: number, h: number): StageLayout {
   }
   return {
     desktop: false,
-    map: { x: 0, y: h * 0.165, s: Math.min(w * 0.4, h * 0.24) },
+    map: { x: w * 0.02, y: h * 0.165, s: Math.min(w * 0.4, h * 0.24) },
   };
 }
